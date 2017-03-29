@@ -46,8 +46,8 @@ if [ -d /etc/squid ] || [ -d /etc/squid3 ]
    sleep 5
    wget https://raw.githubusercontent.com/Devimla/Squid/master/conf && bash conf
    echo " "
-   echo -e "\033[1;31m                   Configuração do servidor  concluída.\033[0m"
-   echo -e "\033[1;36m                   Obrigado por escolher o AdmScript.\033[0m"
+   echo -e "\033[1;31m         Configuração do servidor  concluída.\033[0m"
+   echo -e "\033[1;36m         Obrigado por escolher o AdmScript.\033[0m"
    sleep 3
    2
    elif [ "$resp" == "n" ]; then
@@ -55,7 +55,6 @@ if [ -d /etc/squid ] || [ -d /etc/squid3 ]
    echo -e "\033[1;36mTenha em mente que, sem o Squid instalado seus arquivos não irão conectar.\033[0m"
    sleep 3
    echo -e "\033[1;31m        Instalação do Squid cancelada.\033[0m"
-   sleep 3
-   2
+   tput setaf 3 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para concluir.." ; echo "" ; echo "" ; tput sgr0
   fi
 fi

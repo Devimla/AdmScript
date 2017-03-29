@@ -5,8 +5,13 @@ rm instalar.sh
 rm easyinstall
 rm conf
 clear
-echo -e "\033[1;36mIsso irá configurar totalmente o seu servidor, você poderá instalar um Gerenciador, BadVPN e o Squid, todas as opções são opcionais.\033[1;31m Para continuar pressione ENTER para cancelar pressione CTRL + C.\033[0m"
-read #enter
+echo -e "\033[1;36mIsso irá configurar totalmente o seu servidor, você poderá instalar um Gerenciador, BadVPN e o Squid, todas as opções são opcionais.\033[0m"
+echo " "
+echo -n -e "\033[1;31mDeseja continuar?(S/n):\033[0m"
+
+read resp
+if [ "$resp" == "S" ]; then
+clear
 echo -e "\033[1;35mDevido a problemas de incompatibilidade não tem opção para instalar o PackSSH, para instalar use o comando \033[1;31m2033.\033[0m"
 echo " "
 if [ -f /bin/vpspack ]
@@ -35,8 +40,7 @@ if [ -f /bin/vpspack ]
   fi
 fi
 echo " "
-echo -e "\033[1;37mEscolha um dos script gerenciador abaixo.\033[0m" 
-echo ""
+echo -e "\033[1;31mEscolha um dos script gerenciador abaixo.\033[0m" 
 echo -e "\033[1;36m1|VpsPack
  \033[0;37m|Instalar o VpsPack. 
 \033[1;36m2|CONFVPS
@@ -119,3 +123,9 @@ read #enter
  *)
   id > /dev/null 2> /dev/null
  esac
+elif [ "$resp" == "n" ]; then
+    clear
+    echo -e "\033[1;36m Configuração cancelada.\033[0m"
+    sleep 3
+    2
+fi

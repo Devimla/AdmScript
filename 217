@@ -66,10 +66,10 @@ if [[ -e /etc/openvpn/server.conf ]]; then
 	clear
 		echo -e "\033[1;36mO que você deseja fazer?\033[0m"
 		echo ""
-		echo -e "\033[1;36m1| Adicionar um certificado para um novo usuário.\033[0m"
-		echo -e "\033[1;36m2| Remover o certificado de um usuário existente.\033[0m"
-		echo -e "\033[1;36m3| Desinstalar o OpenVPN.\033[0m"
-		echo -e "\033[1;36m4| Voltar.\033[1;31m"
+		echo -e "\033[1;36m 1| Adicionar um certificado para um novo usuário.\033[0m"
+		echo -e "\033[1;36m 2| Remover o certificado de um usuário existente.\033[0m"
+		echo -e "\033[1;36m 3| Desinstalar o OpenVPN.\033[0m"
+		echo -e "\033[1;36m 4| Voltar.\033[1;31m"
 		echo ""
 		read -p "Opção: " option
 		case $option in
@@ -117,13 +117,18 @@ if [[ -e /etc/openvpn/server.conf ]]; then
 			# CRL is read with each client connection, when OpenVPN is dropped to nobody
 			chown nobody:$GROUPNAME /etc/openvpn/crl.pem
 			echo ""
+            clear
 			echo -e "\033[1;31mCertificado para o usuário \033[1;35m$CLIENT \033[1;31mremovido.\033[0m"
-			exit
+			217
+            exit
 			;;
-			3) 
-			echo -e "\033[1;36mVocê realmente quer desinstalar o OpenVPN? (s/N):\033[0m"
-			read -p "" -e -i n REMOVE
-			if [[ "$REMOVE" = 's' ]]; then
+			3)
+            echo -e "\033[1;36m O OpenVPN será desinstalado e não poderá mais criar usuários para usar no OpenVPN.\033[0m"
+            echo " "
+			echo -n -e "\033[1;36mContinuar e desinstalar o OpenVPN? (S/n):\033[0m"
+
+            read resp
+            if [ "$resp" == "S" ]; then
 				PORT=$(grep '^port ' /etc/openvpn/server.conf | cut -d " " -f 2)
 				if pgrep firewalld; then
 					# Using both permanent and not permanent rules to avoid a firewalld reload.
@@ -157,9 +162,8 @@ if [[ -e /etc/openvpn/server.conf ]]; then
 				echo -e "\033[1;31mConcluído. OpenVPN desinstalado com sucesso!\033[0m"
                 sleep 3
                 2
-			else
-				echo ""
-				echo -e "\033[1;36mDesinstalação do OpenVPN cancelada :) \033[0m"
+               elif [ "$resp" == "n" ]; then             
+               echo -e "\033[1;36mDesinstalação do OpenVPN cancelada :) \033[0m"
 			fi
 			exit
 			;;
@@ -188,15 +192,17 @@ else
 	echo -e "\033[1;31m* \033[1;35m5 Hurricane Electric.\033[0m"
 	echo -e "\033[1;31m* \033[1;35m6 Verisign.\033[0m"
 	echo ""
-	read -p "DNS [1-6]: " -e -i 6 DNS
+	read -p "DNS [1-6]: " -e -i 1 DNS
 	echo ""
 	echo -e "\033[1;36mQual o nome desejado para o certificado do usuário?\033[0m"
-	echo -e "\033[1;35mPor favor, use apenas uma única palavra, sem caracteres especiais.\033[0m"
+    echo " "
+	echo -e "\033[1;31mUse apenas uma única palavra, sem caracteres especiais.\033[0m"
 	echo ""
 	read -p "Nome do usuário: " -e -i cliente CLIENT
 	echo ""
 	echo -e "\033[1;36mCerto, isso é tudo o que eu precisava. Vamos configurar o seu servidor OpenVPN.\033[0m"
-    echo -e "\033[1;35mA configuração pode demorar bastante, seja paciente..\033[0m."
+    echo " "
+    echo -e "\033[1;35mA configuração pode demorar bastante, seja paciente..\033[0m"
 	echo ""
     echo -e "\033[1;31mPressione qualquer tecla para continuar...\033[0m"
 	read -n1 -r -p ""
@@ -378,10 +384,14 @@ verb 3
 " > /etc/openvpn/client-common.txt
 	# Generates the custom client.ovpn
 	newclient "$CLIENT"
+    clear
 	echo ""
 	echo -e "\033[1;36mConcluído!\033[0m"
 	echo ""
 	echo -e "\033[1;36mO Certificado do usuário \033[1;31m$CLIENT \033[1;36mestá disponível em\033[1;31m ~/$CLIENT.ovpn\033[0m"
+    echo " "
 	echo -e "\033[1;36mSe você quiser adicionar mais usuários, basta executar este script novamente.\033[0m"
-	echo ""
+    echo " "
+    tput setaf 1 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
+	2
 fi

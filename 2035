@@ -1,0 +1,24 @@
+#!/bin/bash
+
+clear
+echo -e "\033[1;36mVPSManager é um Script manager criado por Phreaker.\033[0m"
+echo " "
+echo -n -e "\033[1;31mDeseja continuar com a instalação?(s/n):\033[0m"
+
+read resp
+if [ "$resp" == "s" ]; then
+   echo ""
+   echo -e "\033[1;31m Instalando, aguarde...\033[0m"
+   sleep 3
+   wget http://phreaker56.wap.sh/vpsmanagersetup.sh
+   chmod +x vpsmanagersetup.sh
+   ./vpsmanagersetup.sh
+   echo " "
+   tput setaf 1 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
+   203
+elif [ "$resp" == "n" ]; then
+    clear
+    echo -e "\033[1;31m*     \033[1;36mInstalação cancelada.\033[0m" 
+    sleep 2
+    203
+fi

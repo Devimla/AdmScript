@@ -35,13 +35,13 @@ sleep 2
 2
 }
 clear
-echo -e "\033[1;31mPara sair precione Ctrl + C\033
-\033[1;36m 1|Acelerar
- \033[0;37m |Tentar acelerar seu servidor.
-\033[1;36m 2|Reverter
- \033[0;37m |Reverter tentativa de aceleração.
-\033[1;36m 3|Voltar
- \033[0;37m |voltar paro o menu anterior.\033[0m"
+echo -e "
+\033[1;36m 1|\033[1;36mAcelerar
+  \033[0;37m|Tentar acelerar seu servidor.
+\033[1;36m 2|\033[1;36mReverter
+  \033[0;37m|Reverter tentativa de aceleração.
+\033[1;36m 3|\033[1;36mVoltar
+  \033[0;37m|Voltar paro o menu anterior.\033[0m"
 read -p "Opção:" opcao
 
 case $opcao in

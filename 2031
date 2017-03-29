@@ -1,19 +1,26 @@
 #!/bin/bash
 
 clear
-echo -e "\033[1;36mVpsPack é um ótimo script para criar, apagar, definir limite de usuários, etc. VpsPack foi criado por Luiz.\033[0m" 
-echo -e "\033[1;31mPara prosseguir com a instalação aperte ENTER, para cancelar CTRL + C\033[0m"
-read  #enter
-echo -e "\033[1;36m          Iniciando instalação do VpsPack.\033[0m"
-sleep 2
-rm install
-rm install.1
-clear
-apt-get update -y 
-apt-get install wget sudo -y
-clear
-wget https://raw.githubusercontent.com/RicKbrL/VpsPack/master/install && bash install
-echo " "
-echo -e "\033[1;31mPressione enter para concluir.\033[0m"
-read  #enter
-203
+echo -e "\033[1;36mVpsPack é um script manager criado por RickUNIX.\033[0m" 
+echo ""
+echo -n -e "\033[1;31mDeseja continuar com a instalação?(s/n):\033[0m"
+
+read resp
+if [ "$resp" == "s" ]; then
+    echo ""
+    echo -e "\033[1;31m Instalando, aguarde...\033[0m"
+    sleep 2
+    rm install
+    apt-get update -y 
+    apt-get install wget sudo -y
+    clear
+    wget https://raw.githubusercontent.com/RicKbrL/VpsPack/master/install && bash install
+    echo " "
+    tput setaf 1 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
+    203
+elif [ "$resp" == "n" ]; then
+    clear
+    echo -e "\033[1;31m*     \033[1;36mInstalação cancelada.\033[0m" 
+    sleep 2
+    203
+fi

@@ -1,11 +1,15 @@
 
 clear
 echo -e "\033[1;31mATENCAO: \033[1;36mN utilize usuarios do grupo sudo para tunelamento SSH (ehi, ePro, ktc, etc). Caso contrario vc estara deixando seu servidor vulneravel.\033[0m"
-echo -e "\033[1;35mPressione enter para continuar e \033[1;31mCTRL + X para sair.\033[0m"
-read #enter
-clear
+echo " "
+echo -n -e "\033[1;31mDeseja continuar?(S/n):\033[0m"
+
+read resp
+if [ "$resp" == "S" ]; then
+echo ""
 if [ $(id -u) -eq 0 ]; then
-    echo -e "\033[1;36mDigite os dados do novo usuario.\033[0m"
+    echo -e "\033[1;36mPreencha os dados do novo usuario.\033[0m"
+    echo ""
 	read -p "Digite o nome : " username
 	read -s -p "Digite a senha : " password
 	egrep "^$username" /etc/passwd >/dev/null
@@ -22,13 +26,16 @@ if [ $(id -u) -eq 0 ]; then
         sudo addgroup $username sudo
         clear
         echo -e "\033[1;36mUsuario $username foi criado e acionado ao grupo sudo.\033[0m"
+        echo ""
         echo -e "\033[1;35mEm vez de usar o root, use o usuario $username para entrar no servidor.\033[0m"
         echo " "
-        echo -e "\033[1;31mPressione enter para finalizar.\033[0m"
-        read #enter
+        tput setaf 1 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
         2
 	fi
-else
-	echo -e "\033[1;31mSomente o root pode adicionar um usuario ao sistema.\033[0m"
-	exit 2
+   else
+	  echo -e "\033[1;31mSomente o root pode adicionar um usuario ao sistema.\033[0m"
+   exit 2
+   fi
+elif [ "$resp" == "n" ]; then
+    2
 fi

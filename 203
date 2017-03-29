@@ -20,15 +20,20 @@ if [ -f /bin/vpspack ]
   echo -e "\033[1;31mBadManager \033[1;36mjá está instalado.\033[0m"
   true
   fi
+  if [ -f /bin/ajuda ]
+  then
+  echo -e "\033[1;31mVPSManager \033[1;36mjá está instalado.\033[0m"
+  true
+  fi
 fi
 echo " "
-echo -e "\033[1;36mEscolha um dos script desejado abaixo.\033[0m"
-echo -e "\033[1;31mPara sair pressione Ctrl + C\033
-\033[1;36m 1|VpsPack
-\033[1;36m 2|CONFVPS
-\033[1;36m 3|PackSSH
-\033[1;36m 4|BadManager
-\033[1;36m 5|Voltar\033[0m"
+echo -e "\033[1;35mEscolha um dos script desejado abaixo.\033[0m"
+echo -e "\033[1;36m 1\033[1;31m|\033[1;36mVpsPack
+\033[1;36m 2\033[1;31m|\033[1;36mCONFVPS
+\033[1;36m 3\033[1;31m|\033[1;36mPackSSH
+\033[1;36m 4\033[1;31m|\033[1;36mBadManager
+\033[1;36m 5\033[1;31m|\033[1;36mVPSManager
+\033[1;36m 6\033[1;31m|\033[1;36mVoltar\033[0m"
 read -p "Opção:" opcao
 
 case $opcao in
@@ -41,6 +46,8 @@ case $opcao in
  4)
   2034;;
  5)
+  2035;;
+ 6)
    2;;
   *) 
   id > /dev/null 2> /dev/null

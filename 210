@@ -1,8 +1,11 @@
 #!/bin/bash
 
 clear
-read -p "Digite o novo hostname da maquina: " hostname
-hostname $hostname
-echo -e "\033[1;36m Hostname atualizado, encerre essa sesso SSH e entre novamente.\033[0m"
-sleep 3
+tput setaf 1 ; tput bold ; read -p "Digite o novo hostname da maquina: " hostname tput sgr0
+echo ""
+echo -e "\033[1;36mNome alterado para:\033[0m" $hostname
+echo ""
+echo -e "\033[1;36mHostname atualizado."
+echo -e "\033[1;36mEncerre essa sessão SSH e entre novamente.\033[0m"
+sleep 5
 2
