@@ -68,8 +68,8 @@ clear
 echo -e "\033[1;36m        Iniciando instalação do VpsPack.\033[0m"
 sleep 3
 wget https://raw.githubusercontent.com/RicKbrL/VpsPack/master/install && bash install
-echo -e "\033[1;31mPressione enter para continuar.\033[0m"
-read  #enter
+echo " "
+tput setaf 1 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 clear
 211c;;
  2) 
@@ -85,8 +85,8 @@ sleep 3
 wget https://raw.githubusercontent.com/glemysson-Hacker/GlEmYsSoN/master/installer.sh
 chmod +x installer.sh
 bash installer.sh
-echo -e "\033[1;31mPressione ENTER para concluir.\033[0m"
-read #enter 
+echo " "
+tput setaf 1 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 211c;;
  3)
 echo -e "\033[1;36mBadManager é um script gerenciador criado por BadGuy. Seu principal diferencial é o uso de várias linguagem utilizados para sua criação.\033[0m"
@@ -97,8 +97,8 @@ apt-get update -y
 apt-get install wget sudo -y
 clear
 sudo apt-get install wget -y && wget -q https://raw.githubusercontent.com/BadGuy552/BadManager/master/instalar.sh && sudo bash instalar.sh && rm instalar.sh
-echo -e "\033[1;31mPressione ENTER para concluir.\033[0m"
-read #enter
+echo " "
+tput setaf 1 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 211c;;
  4)
 echo -e "\033[1;36mVPSManager é um script gerenciador criado por Phreaker56.\033[0m"
@@ -112,8 +112,8 @@ wget http://phreaker56.wap.sh/vpsmanagersetup.sh
 chmod +x vpsmanagersetup.sh
 ./vpsmanagersetup.sh
 echo ""
-echo -e "\033[1;31mPressione ENTER para concluir.\033[0m"
-read #enter 
+echo " "
+tput setaf 1 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 211c
 ;;
  5)
@@ -125,7 +125,7 @@ read #enter
  esac
 elif [ "$resp" == "n" ]; then
     clear
-    echo -e "\033[1;36m Configuração cancelada.\033[0m"
+    echo -e "\033[1;36mConfiguração cancelada.\033[0m"
     sleep 3
     2
 fi

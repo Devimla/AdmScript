@@ -46,7 +46,7 @@ if [ -d /etc/squid ] || [ -d /etc/squid3 ]
    sleep 5
    wget https://raw.githubusercontent.com/Devimla/Squid/master/conf && bash conf
    echo " "
-   echo -e "\033[1;31m         Configuração do servidor  concluída.\033[0m"
+   echo -e "\033[1;31m        Configuração do servidor  concluída.\033[0m"
    echo -e "\033[1;36m         Obrigado por escolher o AdmScript.\033[0m"
    echo " "
    tput setaf 6 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para finalizar..." ; echo "" ; echo "" ; tput sgr0
