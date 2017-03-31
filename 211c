@@ -31,7 +31,7 @@ rm conf
 clear
 if [ -d /etc/squid ] || [ -d /etc/squid3 ]
   then
-  echo -e "\033[1;31mSquid já está instalado. \033[1;36m Se quiser instalar o Squid novamente use a opção 2 do menor anterior ou o comando \033[1;31m202.\033[0m"
+  echo -e "\033[1;31mSquid já está instalado. \033[1;36m Se quiser instalar o Squid novamente use a opção 2 do menu anterior ou o comando \033[1;31m202.\033[0m"
   echo -e "\033[1;35mPressione enter para continuar.\033[0m"
   read #enter
   2
@@ -48,9 +48,10 @@ if [ -d /etc/squid ] || [ -d /etc/squid3 ]
    echo " "
    echo -e "\033[1;31m         Configuração do servidor  concluída.\033[0m"
    echo -e "\033[1;36m         Obrigado por escolher o AdmScript.\033[0m"
-   sleep 3
+   echo " "
+   tput setaf 6 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para finalizar..." ; echo "" ; echo "" ; tput sgr0
    2
-   elif [ "$resp" == "n" ]; then
+elif [ "$resp" == "n" ]; then
    clear
    echo -e "\033[1;36mTenha em mente que, sem o Squid instalado seus arquivos não irão conectar.\033[0m"
    sleep 3
