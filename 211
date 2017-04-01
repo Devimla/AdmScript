@@ -4,6 +4,59 @@ rm install
 rm instalar.sh
 rm easyinstall
 rm conf
+
+function installadmmanager(){
+clear
+    echo -e "\033[1;36mAdmManager, script gerenciador de servidor com diversas opções para lhe ajudar com o gerenciamento de usuários.\033[0m"
+	echo
+    tput setaf 5 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para continuar com a instalação..." ; echo "" ; echo "" ; tput sgr0
+echo
+if [ -f "/root/usuarios.db" ]
+then
+	echo -e "\033[1;36mUma base de dados de usuários foi encontrada!\033[0m"
+	echo
+	echo -e "\033[1;35mO que deseja fazer?\033[0m" 
+	echo -e "\033[1;36m1|Manter Base de Dados Atual\033[0m"
+	echo -e "\033[1;30m |Preservando o limite de conexões simultâneas dos usuários\033[0m"
+	echo -e "\033[1;36m2|Criar uma nova base de dados.\033[0m"
+	echo -e "\033[1;30m |Criar base da dados novas e zerar a atual.\033[0m"
+	tput setaf 5 ; tput bold ; read -p "Opção?: " -e -i 1 optiondb ; tput sgr0
+else
+	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
+fi
+if [[ "$optiondb" = '2' ]]; then
+	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
+fi
+echo ""
+tput setaf 6 ; tput bold ; echo "" ; echo "               Aguarde, instalando AdmManager..." ; echo "" ; tput sgr0
+sleep 3
+apt-get update -y
+apt-get upgrade -y
+rm /bin/criarusuario /bin/expcleaner /bin/sshlimiter /bin/addhost /bin/listar /bin/sshmonitor /bin/ajuda /bin/openvpnsetup /bin/userbackup /bin/tcptweaker /bin/badvpnsetup /bin/otimizar /bin/speedtest> /dev/null
+rm /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
+apt-get install squid3 bc screen nano unzip dos2unix wget python-pip inxi -y
+pip install speedtest-cli 
+killall apache2
+apt-get purge apache2 -y
+if [ -f "/usr/sbin/ufw" ] ; then
+	ufw allow 443/tcp ; ufw allow 80/tcp ; ufw allow 3128/tcp ; ufw allow 8799/tcp ; ufw allow 8080/tcp
+fi
+git clone https://github.com/Devimla/AdmManager.git
+clear
+   cd AdmManager
+   rm -rf README.md
+   rm -rf install
+   for arqs in `ls`
+   do
+   rm /bin/$arqs 2>/dev/null
+   mv $arqs /bin
+   chmod +x /bin/$arqs
+   done
+   echo -e "\033[1;36mConcluído, como usuário root ou usuário com permissões sudo execute o comando \033[1;31madmm \033[1;36mpara selecionar a opção desejada ou use o comando \033[1;31mlistar \033[1;36mpara ter uma lista dos atalhos disponíveis.\033[0m"
+   tput setaf 5 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para concluir..." ; echo "" ; echo "" ; tput sgr0
+   211c
+}
+
 clear
 echo -e "\033[1;36mIsso irá configurar totalmente o seu servidor, você poderá instalar um Gerenciador, BadVPN e o Squid, todas as opções são opcionais.\033[0m"
 echo " "
@@ -49,9 +102,10 @@ echo -e "\033[1;36m1|VpsPack
  \033[0;37m|Instalar o BadManager.
 \033[1;36m4|VPSManager
  \033[0;37m|Instalar VPSManager.
-\033[1;36m5|Nenhum
+\033[1;36m5|AdmManager
+\033[1;36m6|Nenhum
  \033[0;37m|Pular essa etapa e não instalar nenhum.
-\033[1;36m6|Voltar
+\033[1;36m7|Voltar
  \033[0;37m|Voltar ao menu anterior.\033[0m"
 read -p "Opção:" opcao
 
@@ -117,8 +171,10 @@ tput setaf 1 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para contin
 211c
 ;;
  5)
+  installadmmanager;;
+ 6)
    211c;;
-  6)
+  7)
    2;;
  *)
   id > /dev/null 2> /dev/null
