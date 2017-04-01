@@ -12,8 +12,8 @@ if [ "$resp" == "S" ]; then
     echo "" 
     echo -e "\033[1;31mTentando acelerar o servidor, aguarde...\033[0m"
     sleep 3
-    echo "Compression yes" >> /etc/ssh/sshd_config
-    service sshd restart
+    grep -v "^Compression yes" /etc/ssh/sshd_config > /tmp/sshcp && mv /tmp/sshcp /etc/ssh/sshd_config
+	echo "Compression yes" >> /etc/ssh/sshd_config
     clear
     echo -e "\033[1;36mTentativa de aceleração concluída.\033[0m" 
     sleep 4

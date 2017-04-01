@@ -8,9 +8,14 @@ echo -n -e "\033[1;35mDeseja continuar?(SIM/n):\033[0m"
 read resp
 if [ "$resp" == "SIM" ]; then
     echo -e "\033[1;31mAguarde, removendo usuários.....\033[0m"
-    for user in $(grep -v nobody /etc/passwd |awk -F : '$3 > 900 {print $1}'); do kill $(ps -u $user |awk '{print $1}'); userdel $user; done
-    sleep 5
-    clear 
+    for user in $(cat /etc/passwd |awk -F : '$3 > 900 {print $1}' |grep -v "rick" |grep -vi "nobody")
+    do
+    userpid=$(ps -u $user |awk {'print $1'})
+    kill "$userpid" 2>/dev/null
+    userdel $user
+    echo -e "\033[1;36m$user \033[1;31mdeletado com sucesso!\033[0m"
+    done
+    echo
     echo -e "\033[1;36mTodos os usuários foram removidos com sucesso :).\033[0m"
 elif [ "$resp" == "n" ]; then
     2
