@@ -91,6 +91,11 @@ if [ -f /bin/vpspack ]
   echo -e "\033[1;31mVPSManager \033[1;36mjá está instalado.\033[0m"
   true
   fi
+  if [ -f /bin/admm ]
+  then
+  echo -e "\033[1;31mAdmManager \033[1;36mjá está instalado.\033[0m"
+  true
+  fi
 fi
 echo " "
 echo -e "\033[1;31mEscolha um dos script gerenciador abaixo.\033[0m" 
