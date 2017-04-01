@@ -1,0 +1,23 @@
+#!/bin/bash
+
+clear
+echo -e "\033[1;36mAdmManager é um script manager criado por Mr.Devim.\033[0m"
+echo ""
+echo -n -e "\033[1;31mDeseja continuar com a instalação?(s/n):\033[0m"
+
+read resp
+if [ "$resp" == "s" ]; then
+     rm install
+     echo ""
+     echo -e "\033[1;31m Instalando, aguarde...\033[0m"
+     sleep 3
+     apt-get update -y 
+     apt-get install wget sudo -y
+     clear
+     wget https://raw.githubusercontent.com/Devimla/AdmManager/master/install && bash install
+elif [ "$resp" == "n" ]; then
+    clear
+    echo -e "\033[1;31m*     \033[1;36Instalação cancelada.\033[0m" 
+    sleep 2
+    203
+fi

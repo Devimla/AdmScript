@@ -12,7 +12,7 @@ echo -n -e "\033[1;31mDeseja continuar?(S/n):\033[0m"
 read resp
 if [ "$resp" == "S" ]; then
 clear
-echo -e "\033[1;35mDevido a problemas de incompatibilidade não tem opção para instalar o PackSSH, para instalar use o comando \033[1;31m2033.\033[0m"
+echo -e "\033[1;35mDevido a problemas de incompatibilidade não tem opção para instalar o PackSSH e o AdmManager, para instalar use o comando \033[1;31m203.\033[0m"
 echo " "
 if [ -f /bin/vpspack ]
   then
