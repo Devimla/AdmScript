@@ -100,14 +100,15 @@ fi
 echo " "
 echo -e "\033[1;31mEscolha um dos script gerenciador abaixo.\033[0m" 
 echo -e "\033[1;36m1|VpsPack
- \033[0;37m|Instalar o VpsPack. 
+ \033[0;37m|Instalar o VpsPack, By: RickUnix
 \033[1;36m2|CONFVPS
- \033[0;37m|Instalar o CONFVS.
+ \033[0;37m|Instalar o CONFVPS. 
 \033[1;36m3|BadManager
- \033[0;37m|Instalar o BadManager.
+ \033[0;37m|Instalar o BadManager, By: BadGuy
 \033[1;36m4|VPSManager
- \033[0;37m|Instalar VPSManager.
+ \033[0;37m|Instalar VPSManager, By: Phreaker
 \033[1;36m5|AdmManager
+\033[0;37m|Instalar AdmManager, By: Devim
 \033[1;36m6|Nenhum
  \033[0;37m|Pular essa etapa e não instalar nenhum.
 \033[1;36m7|Voltar
