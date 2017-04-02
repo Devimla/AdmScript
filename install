@@ -23,7 +23,7 @@ if [ -f /bin/adm ]
   then
   echo -e "\033[1;36mAdmScript já está instalado, será necessário a desinstalação da versão atual para a instalar novamente.\033[0m"
   echo " "
-  echo -e "\033[1;31mDeseja desinstalar o AdmScript instalado atualmente? (S/n)\033[0m"
+  echo -e "\033[1;31mDesinstalar AdmScript instalado atualmente? (S/n)\033[0m"
   
   read resp
   if [ "$resp" == "S" ];then
@@ -66,9 +66,9 @@ if [ -f /bin/adm ]
    sleep 3
    rm /bin/5
    clear
-   echo -e "\033[1;31mDesinstalação concluída.\033[0m"
+   echo -e "\033[1;31m		 Desinstalação concluída.\033[0m"
    sleep 2
-   echo -e "\033[1;36mIniciando instalação, aguarde...\033[0m"
+   echo -e "\033[1;36m	Iniciando instalação, aguarde...\033[0m"
    sleep 3
    if yum
    then
@@ -109,7 +109,7 @@ if [ -f /bin/adm ]
    adm
    fi
    elif [ $resp -eq "n" ];then
-    echo -e "\033[1;31mDesinstalação cancelada.\033[0m"
+    echo -e "\033[1;31m              Desinstalação cancelada.\033[0m"
     sleep 1
     adm
   fi
@@ -120,7 +120,7 @@ if [ -f /bin/adm ]
    echo -e "\033[1;31mPara prosseguir pressione ENTER, para cancelar CTRL + C.\033[0m"
    read  #enter
    echo " "
-   echo -e "\033[1;36mIniciando instalação, aguarde...\033[0m"
+   echo -e "\033[1;36m         Iniciando instalação, aguarde...\033[0m"
    sleep 3
    if yum -y update
    then
