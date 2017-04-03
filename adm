@@ -25,6 +25,7 @@ echo -n -e "\033[1;31mDeseja continuar?(SIM/n):\033[0m"
 
 read resp
 if [ "$resp" == "SIM" ]; then
+	echo
    echo -e "\033[1;36mDesinstalando o AdmScript, aguarde.\033[0m"
    	rm /bin/adm >/dev/null
         rm /bin/1 >/dev/null
