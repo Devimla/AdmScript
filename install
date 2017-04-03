@@ -21,145 +21,110 @@ fi
 
 if [ -f /bin/adm ]
   then
-  echo -e "\033[1;36mAdmScript já está instalado, será necessário a desinstalação da versão atual para a instalar novamente.\033[0m"
-  echo " "
-  echo -e "\033[1;31mDesinstalar AdmScript instalado atualmente? (S/n)\033[0m"
-  
-  read resp
-  if [ "$resp" == "S" ];then
-      echo ""
-      echo -e "\033[1;36mDesinstalando o AdmScript, aguarde...\033[0m"
-        rm /bin/adm
-        rm /bin/1
-        rm /bin/2
-        rm /bin/3
-        rm /bin/4
-        rm /bin/101
-        rm /bin/102
-        rm /bin/103
-        rm /bin/104
-        rm /bin/201
-        rm /bin/202
-        rm /bin/203
-        rm /bin/2031
-        rm /bin/2032
-        rm /bin/2033
-        rm /bin/204
-        rm /bin/2041
-        rm /bin/2042
-        rm /bin/2043
-        rm /bin/205
-        rm /bin/206
-        rm /bin/207
-        rm /bin/207.py
-        rm /bin/208
-        rm /bin/209
-        rm /bin/210
-        rm /bin/211
-        rm /bin/212
-        rm /bin/213
-        rm /bin/214
-        rm /bin/215
-        rm /bin/216
-        rm /bin/217
-        rm /bin/218
-   sleep 3
-   rm /bin/5
-   clear
-   echo -e "\033[1;31m		 Desinstalação concluída.\033[0m"
-   sleep 2
-   echo -e "\033[1;36m	Iniciando instalação, aguarde...\033[0m"
-   sleep 3
-   if yum
-   then
-   yum -y update
-   yum -y install git
-   git clone https://github.com/Devimla/AdmScript.git
-   clear
-   cd AdmScript
-   rm -rf README.md
-   rm -rf install
-   for arqs in `ls`
-   do
-   rm /bin/$arqs 2>/dev/null
-   mv $arqs /bin
-   chmod +x /bin/$arqs
-   done
-   echo -e "\033[1;36mConcluído, execute o comando \033[1;31madm\033[1;36m como usuário root ou usuário com permissões sudo.\033[0m"
-   echo -e "\033[1;31mPressione ENTER para concluir.\033[0m"
-   read #enter
-   adm
-   else
-   apt-get update
-   apt-get install -y git
-   git clone https://github.com/Devimla/AdmScript.git
-   clear
-   cd AdmScript
-   rm -rf README.md
-   rm -rf install
-   for arqs in `ls`
-   do
-   rm /bin/$arqs 2>/dev/null
-   mv $arqs /bin
-   chmod +x /bin/$arqs
-   done
-   echo -e "\033[1;36mConcluido, execute o comando \033[1;31madm \033[1;36mcomo usuário root ou usuário com permissões sudo.\033[0m"
-   echo -e "\033[1;31mPressione ENTER para concluir.\033[0m"
-   read #enter
-   adm
-   fi
-   elif [ $resp -eq "n" ];then
-    echo -e "\033[1;31m              Desinstalação cancelada.\033[0m"
-    sleep 1
-    adm
-  fi
+  	echo -e "\033[1;31mErro! \033[1;36mAdmScript já está instalado, será necessário a desinstalação da versão atual para a instalar novamente.\033[0m"
   true
   else
-   echo -e "\033[1;36mAdmScript, script baseado no VpsPack que tem o objetivo de lhe ajudar, sem a necessidade de guardar scripts ou comandos.\033[0m"
+   echo -e "\033[1;36mAdmScript, script que tem o objetivo de lhe ajudar, sem a necessidade de guardar scripts ou comandos.\033[0m"
    echo " "
-   echo -e "\033[1;31mPara prosseguir pressione ENTER, para cancelar CTRL + C.\033[0m"
-   read  #enter
-   echo " "
-   echo -e "\033[1;36m         Iniciando instalação, aguarde...\033[0m"
-   sleep 3
-   if yum -y update
-   then
-   yum -y update
-   yum -y install git
-   git clone https://github.com/Devimla/AdmScript.git
-   clear
-   cd AdmScript
-   rm -rf README.md
-   rm -rf install
-   for arqs in `ls`
-   do
-   rm /bin/$arqs 2>/dev/null
-   mv $arqs /bin
-   chmod +x /bin/$arqs
-   done
-   echo -e "\033[1;36mConcluido, execute o comando \033[1;31madm\033[1;36m como usuário root ou usuário com permissões sudo.\033[0m"
-   echo -e "\033[1;31mPressione ENTER para concluir.\033[0m"
-   read #enter
+   tput setaf 1 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
+	echo
+	echo -e "\033[1;35mBaixando arquivos necessários.\033[0m"
+	sleep 9
+	echo
+	echo -e "\033[1;32mDando permissões.\033[0m"
+	sleep 5
+	echo
+	echo -e "\033[1;37mCuidando de algumas coisas. Quase lá!\033[0m"
+	sleep 8
+   wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/adm > /bin/adm
+	chmod +x /bin/adm
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/1 > /bin/1
+	chmod +x /bin/1
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2 > /bin/2
+	chmod +x /bin/2
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/3 > /bin/3
+	chmod +x /bin/3
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/4 > /bin/4
+	chmod +x /bin/4
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/14 > /bin/14
+	chmod +x /bin/5
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/14 > /bin/14
+	chmod +x /bin/14
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/101 > /bin/101
+	chmod +x /bin/101
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/102 > /bin/102
+	chmod +x /bin/102
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/104 > /bin/104
+	chmod +x /bin/104
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/201 > /bin/201
+	chmod +x /bin/201
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/202 > /bin/202
+	chmod +x /bin/202
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/203 > /bin/203
+	chmod +x /bin/203
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/204 > /bin/204
+	chmod +x /bin/204
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/205 > /bin/205
+	chmod +x /bin/205
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/206 > /bin/206
+	chmod +x /bin/206
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/207 > /bin/207
+	chmod +x /bin/207
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/207.py > /bin/207.py
+	chmod +x /bin/207.py
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/208 > /bin/208
+	chmod +x /bin/208
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/209 > /bin/209
+	chmod +x /bin/209
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/210 > /bin/210
+	chmod +x /bin/210
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/211 > /bin/211
+	chmod +x /bin/211
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/211c > /bin/211c
+	chmod +x /bin/211c
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/212 > /bin/212
+	chmod +x /bin/212
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/213 > /bin/213
+	chmod +x /bin/213
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/214 > /bin/214
+	chmod +x /bin/214
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/215 > /bin/215
+	chmod +x /bin/215
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/216 > /bin/216
+	chmod +x /bin/216
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/217 > /bin/217
+	chmod +x /bin/217
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2031 > /bin/2031
+	chmod +x /bin/2031
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2032 > /bin/2032
+	chmod +x /bin/2032
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2033 > /bin/2033
+	chmod +x /bin/2033
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2034 > /bin/2034
+	chmod +x /bin/2034
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2035 > /bin/2035
+	chmod +x /bin/2035
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2036 > /bin/2036
+	chmod +x /bin/2036
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2041 > /bin/2041
+	chmod +x /bin/2041
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2042 > /bin/2042
+	chmod +x /bin/2042
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2043 > /bin/2043
+	chmod +x /bin/2043
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2061 > /bin/2061
+	chmod +x /bin/2061
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2062 > /bin/2062
+	chmod +x /bin/2062
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/2063 > /bin/2063
+	chmod +x /bin/2063
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/20342 > /bin/20342
+	chmod +x /bin/20342
+	echo
+    echo -e "\033[1;36mConcluído, execute o comando \033[1;31madm \033[1;36mcomo usuário root ou usuário com permissões sudo.\033[0m"
+	echo
+   tput setaf 1 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para concluir..." ; echo "" ; echo "" ; tput sgr0
    adm
-   else
-   apt-get update
-   apt-get install -y git
-   git clone https://github.com/Devimla/AdmScript.git
-   clear
-   cd AdmScript
-   rm -rf README.md
-   rm -rf install
-   for arqs in `ls`
-   do
-   rm /bin/$arqs 2>/dev/null
-   mv $arqs /bin
-   chmod +x /bin/$arqs
-   done
-   echo -e "\033[1;36mConcluído, execute o comando \033[1;31madm \033[1;36mcomo usuário root ou usuário com permissões sudo.\033[0m"
-   echo -e "\033[1;31mPressione ENTER para concluir.\033[0m"
-   read #enter
-   adm
-  fi
 fi
 cd
 rm -rf install 2> /dev/null
