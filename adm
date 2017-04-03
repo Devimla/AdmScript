@@ -26,42 +26,46 @@ echo -n -e "\033[1;31mDeseja continuar?(SIM/n):\033[0m"
 read resp
 if [ "$resp" == "SIM" ]; then
    echo -e "\033[1;36mDesinstalando o AdmScript, aguarde.\033[0m"
-   rm /bin/adm
-   rm /bin/1
-   rm /bin/2
-   rm /bin/3
-   rm /bin/4
-   rm /bin/101
-   rm /bin/102
-   rm /bin/103
-   rm /bin/104
-   rm /bin/201
-   rm /bin/202
-   rm /bin/203
-   rm /bin/2031
-   rm /bin/2032
-   rm /bin/2033
-   rm /bin/204
-   rm /bin/2041
-   rm /bin/2042
-   rm /bin/2043
-   rm /bin/2044
-   rm /bin/2045
-   rm /bin/205
-   rm /bin/206
-   rm /bin/207
-   rm /bin/207.py
-   rm /bin/208
-   rm /bin/209
-   rm /bin/210
-   rm /bin/211
-   rm /bin/212
-   rm /bin/213
-   rm /bin/214
-   rm /bin/215
-   rm /bin/216
-   rm /bin/217
-   rm /bin/218
+   	rm /bin/adm >/dev/null
+        rm /bin/1 >/dev/null
+        rm /bin/2 >/dev/null
+        rm /bin/3 >/dev/null
+        rm /bin/4 >/dev/null
+        rm /bin/101 >/dev/null
+        rm /bin/102 >/dev/null
+        rm /bin/103 >/dev/null
+        rm /bin/104 >/dev/null
+        rm /bin/201 >/dev/null
+        rm /bin/202 >/dev/null
+        rm /bin/203 >/dev/null
+        rm /bin/2031 >/dev/null
+        rm /bin/2032 >/dev/null
+        rm /bin/2033 >/dev/null
+		rm /bin/2034 >/dev/null
+		rm /bin/2035 >/dev/null
+		rm /bin/2036 >/dev/null
+        rm /bin/204 >/dev/null
+        rm /bin/2041 >/dev/null
+        rm /bin/2042 >/dev/null
+        rm /bin/2043 >/dev/null
+		rm /bin/2061 >/dev/null
+		rm /bin/2062 >/dev/null
+		rm /bin/2063 >/dev/null
+		rm /bin/20342 >/dev/null
+        rm /bin/205 >/dev/null
+        rm /bin/206 >/dev/null
+        rm /bin/207 >/dev/null
+        rm /bin/207.py >/dev/null
+        rm /bin/208 >/dev/null
+        rm /bin/209 >/dev/null
+        rm /bin/210 >/dev/null
+        rm /bin/211 >/dev/null
+        rm /bin/212 >/dev/null
+        rm /bin/213 >/dev/null
+        rm /bin/214 >/dev/null
+        rm /bin/215 >/dev/null
+        rm /bin/216 >/dev/null
+        rm /bin/217 >/dev/null
    clear
    echo -e "\033[1;31m               Desinstalação concluída :(\033[0m"
 elif [ "$resp" == "n" ]; then
