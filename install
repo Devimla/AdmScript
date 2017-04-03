@@ -64,8 +64,6 @@ if [ -f /bin/adm ]
 	chmod +x /bin/203
 	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/204 > /bin/204
 	chmod +x /bin/204
-	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/205 > /bin/205
-	chmod +x /bin/205
 	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/206 > /bin/206
 	chmod +x /bin/206
 	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/207 > /bin/207
@@ -127,5 +125,6 @@ if [ -f /bin/adm ]
    adm
 fi
 cd
+rm -rf install > /dev/null
 rm -rf install 2> /dev/null
 rm -rf AdmScript 2> /dev/null
