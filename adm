@@ -116,6 +116,7 @@ case $opcao in
      admm
   true
   else
+	rm install -rf >/dev/null
      wget https://raw.githubusercontent.com/Devimla/AdmManager/master/install && bash install
 	fi;;
   6)
