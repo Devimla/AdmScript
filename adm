@@ -99,7 +99,7 @@ echo -e "\033[1;36m5|AdmManager
 fi
 echo -e "\033[1;36m6|Desinstalar
  \033[0;37m|Desinstalar o AdmScript.\033[0m"
-read -p "Opção:" opcao
+tput setaf 6 ; tput bold ; printf "Opção:" ; tput sgr0 ; tput setaf 7 ; tput bold ; read opcao ; tput sgr0
 
 case $opcao in
  1)

@@ -41,7 +41,7 @@ echo -e "\033[1;31mPara sair precione Ctrl + C\033
   \033[0;37m|Opções para o OpenVPN.
 \033[1;36m18|Voltar
   \033[0;37m|Voltar para o menu anterior.\033[0m"
-read -p "Opção:" opcao
+tput setaf 6 ; tput bold ; printf "Opção:" ; tput sgr0 ; tput setaf 7 ; tput bold ; read opcao ; tput sgr0
 
 case $opcao in
  1)
