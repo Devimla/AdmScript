@@ -1,8 +1,10 @@
  #!/bin/bash -e
 
+clear
+echo " " >/dev/null
 if [ ! /proc/cpuinfo ]
 then
-echo -e "\033[1;31m Oops, ouve um erro ao tentar obter informações. \033[0m"
+echo -e "\033[1;31mOops, ouve um erro ao tentar obter informações. \033[0m"
 exit 0
 fi
 if [ ! /etc/issue.net ]
@@ -23,38 +25,49 @@ cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
 
 if [ "$system" ]
 then
-
-echo -e "\033[1;36m Versão SO: \033[1;31m $system \033[0m"
+echo -e "\033[1;36m-----¦Sistema operacional\033[0m"
+echo -e "\033[1;31mVersão: \033[1;37m$system \033[0m" 
 else
-echo -e "\033[1;36m System: \033[1;31m Não foi possível identificar sua VS dw SO \033[0m"
+echo -e "\033[1;31mErro: \033[1;37mNão foi possível identificar versão do sistema.\033[0m"
 fi
 if [ "$based" ]
 then
-echo "Its a $based-like"
+echo -e "\033[1;31mBaseado: \033[1;37mIts a $based-like\033[0m"
 else
 echo "Based system not Available"
 fi
 if [ "$processor" ]
 then
-echo -e "\033[1;36m Processador: \033[1;31m $processor x$cpus \033[0m"
+echo "" 
+echo -e "\033[1;36m-----¦Processador\033[0m"
+echo -e "\033[1;31mModelo: \033[1;37m$processor x$cpus \033[0m"
 else
-echo -e "\033[1;36m Processor: \033[1;31m Sem informação \033[0m"
+echo -e "\033[1;31Modelo: \033[1;37mSem informação \033[0m"
 fi
 clock=$(lscpu | grep "CPU MHz" | awk '{print $3}')
 if [ "$clock" ]
 then
-echo -e "\033[1;36m Clock: \033[1;31m $clock MHz \033[0m"
+echo -e "\033[1;31mClock: \033[1;37m$clock MHz \033[0m"
 else
-echo -e "\033[1;36m Clock: \033[1;31m Sem informações \033[0m"
+echo -e "\033[1;31mClock: \033[1;37mSem informações \033[0m"
 fi
-echo "$(ps aux  | awk 'BEGIN { sum = 0 }  { sum += sprintf("%f",$3) }; END { printf " \033[1;36mCPU Usage:\033[0m" " \033[1;31m %.2f \033[0m" "\033[1;31m%% \033[0m", sum}')"
+echo "$(ps aux  | awk 'BEGIN { sum = 0 }  { sum += sprintf("%f",$3) }; END { printf "\033[1;31mCPU Usage:\033[0m" " \033[1;37m %.2f \033[0m" "\033[1;37m%% \033[0m", sum}')"
+echo " "
+echo -e "\033[1;36m-----¦Memória RAM\033[0m"
 totalram=$(free | grep Mem | awk '{print $2}')
 usedram=$(free | grep Mem | awk '{print $3}')
 freeram=$(free | grep Mem | awk '{print $4}')
 swapram=$( cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
-echo -e "\033[1;36m RAM TOTAL: \033[1;31m $(($totalram / 1024))MB \033[1;36m USADA: \033[1;31m $(($usedram / 1024))MB \033[1;36m FREE: \033[1;31m $(($freeram / 1024))MB \033[1;36m SWAP: \033[1;31m $(($swapram / 1024))MB \033[0m" 
-echo -e "\033[1;36m Uptime: \033[1;31m$(uptime)\033[0m"
-echo -e "\033[1;36m Nome Host: \033[1;31m $(hostname)\033[0m"
-echo -e "\033[1;36m Endereço de IP: \033[1;31m $(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
-echo -e "\033[1;36m Kernel Version: \033[1;31m $(uname -r)"
-echo -e "\033[1;36m Arctetura: \033[1;31m $(uname -m)\033[0m"
+echo -e "\033[1;31mMemória RAM e SWAP\033[0m"
+echo -e "\033[1;31mRAM TOTAL: \033[1;37m$(($totalram / 1024))MB\033[1;36m" 
+echo -e "\033[1;31mSWAP TOTAL: \033[1;37m$(($swapram / 1024))MB \033[0m"
+echo " "
+echo -e "\033[1;36mOutras informações\033[0m"
+echo -e "\033[1;31mUptime: \033[1;37m$(uptime)\033[0m"
+echo -e "\033[1;31mNome Host: \033[1;37m$(hostname)\033[0m"
+echo -e "\033[1;31mEndereço de IP: \033[1;37m$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
+echo -e "\033[1;31mKernel Version: \033[1;37m$(uname -r)"
+echo -e "\033[1;31mArctetura: \033[1;37m$(uname -m)\033[0m"
+echo " "
+tput setaf 5 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para voltar..." ; echo "" ; echo "" ; tput sgr0
+1

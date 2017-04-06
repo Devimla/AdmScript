@@ -1,0 +1,22 @@
+#!/bin/bash
+
+clear
+
+
+if free 1>/dev/null 2>/dev/null
+then
+echo -e "\n\033[1;36m------¦Memoria RAM\033[0m"
+echo -e "\033[1;31m¦Total: \033[0;37m$(free -m |grep -i mem |awk {'print $2'}) MB | $(( $(free -m |grep -i mem |awk {'print $2'}) / 1024 )) GB\033[0m"
+echo -e "\033[1;31m¦Em Uso: \033[0;37m$(free -m |grep -i mem |awk {'print $3'}) MB | $(( $(free -m |grep -i mem |awk {'print $3'}) / 1024 )) GB\033[0m"
+echo -e "\033[1;31m¦Livre: \033[0;37m$(free -m |grep -i mem |awk {'print $4'}) MB | $(( $(free -m |grep -i mem |awk {'print $4'}) / 1024 )) GB\033[0m"
+echo -e "\n\033[1;36m-------¦Swap\033[0m"
+echo -e "\033[1;31m¦Total: \033[0;37m$(free -m |grep -i swap |awk {'print $2'}) MB | $(( $(free -m |grep -i swap |awk {'print $2'}) / 1024 )) GB\033[0m"
+echo -e "\033[1;31m¦Em Uso: \033[0;37m$(free -m |grep -i swap |awk {'print $3'}) MB | $(( $(free -m |grep -i swap |awk {'print $3'}) / 1024 )) GB\033[0m"
+echo -e "\033[1;31m¦Livre: \033[0;37m$(free -m |grep -i swap |awk {'print $4'}) MB | $(( $(free -m |grep -i swap |awk {'print $4'}) / 1024 )) GB\033[0m"
+else
+echo -e "\n\033[1;30mMemoria RAM\033[0m"
+echo "Não foi possivel obter informações sobre a memoria RAM"
+fi
+echo 
+tput setaf 5 ; tput bold ; read -n 1 -s -p "Pressione qualquer tecla para voltar..." ; echo "" ; echo "" ; tput sgr0
+1
