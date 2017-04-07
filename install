@@ -52,6 +52,8 @@ if [ -f /bin/adm ]
 	chmod +x /bin/101
 	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/102 > /bin/102
 	chmod +x /bin/102
+	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/103 > /bin/103
+	chmod +x /bin/103
 	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/104 > /bin/104
 	chmod +x /bin/104
 	wget -o /dev/null -O- https://raw.githubusercontent.com/Devimla/AdmScript/master/201 > /bin/201
