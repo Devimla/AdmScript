@@ -56,7 +56,7 @@ case $opcao in
  6)
    2036;;
  7)
-   6;;
+   adm;;
   *) 
   id > /dev/null 2> /dev/null
 esac
